@@ -7,15 +7,29 @@ class FormBox extends React.Component {
     };
 
     handleTweetChange = (event) => {
-        console.dir(event.target.value);
+        //console.dir(event.target.value);
         this.setState({
             tweet: event.target.value
         })
     }
-
+    handleSubmit = (event) => {        
+        const tweet = this.state.tweet;              
+        fetch('https://nc-sprints-api.herokuapp.com/api/twitter/tweets', {   
+              headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+            },         
+            method: 'post',
+            body: JSON.stringify({status: tweet})            
+        })
+        .then(res => {          
+          return res;
+        })
+    }
+ 
     render() {
         return (
-            <form id='TweetBox' style={{
+            <form onSubmit={this.handleSubmit} id='TweetBox' style={{
                 color: '',
                 backgroundColor: ''
                 }}>
