@@ -12,7 +12,7 @@ class Profile extends React.Component {
     }
     componentDidMount () {
         // always called after render
-        fetch('https://nc-sprints-api.herokuapp.com/api/twitter/users/CuriousMau')
+        fetch('https://nc-sprints-api.herokuapp.com/api/twitter/users/RuthYMNg')
         .then(res => {            
            return res.json();
         })

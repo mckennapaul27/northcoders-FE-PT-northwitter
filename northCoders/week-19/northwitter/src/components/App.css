@@ -131,14 +131,19 @@ margin-bottom: 0;
 color: #4AB3F4;
 font-weight: bold;
 }
-.x-show-profile {
-  opacity: 0;
-  width: 1rem;
-  height: 1rem;
-}
+
 .show-profile {
-  display: block;
-  width: 5rem;
-  height: 5rem;
+  color: white;
 }
+
+.show-profile:hover {  
+  width: 250px;
+  height: 250px;  
+  margin-right: -500px;  
+}
+.show-profile img:hover {
+  width: 250px;
+  height: 250px;  
+}
+
 

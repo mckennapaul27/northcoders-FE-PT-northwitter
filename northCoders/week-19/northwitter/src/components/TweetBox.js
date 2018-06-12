@@ -36,28 +36,35 @@ class TweetBox extends React.Component {
 
 class Tweet extends React.Component {
     state = {
-        hover: false
+        hover: false,
+        profile: '(i)' 
     }
     hoverOn = (event) => {
         this.setState({ 
-            hover: true 
+            hover: true,
+            profile: <Profile /> 
         });
     }
     hoverOff = (event) => { 
         this.setState({ 
-            hover: false 
+            hover: false,
+            profile: '(i)' 
         });    
     }
+    
     render() {
         return (
             <div className='tweet-box'>
-                <div className='tweet-box-img'>                    
-                    <div className={this.state.hover? 'show-profile': 'x-show-profile'} onMouseEnter=       {this.hoverOn} 
+                <div className='tweet-box-img'> 
+                    <img src={this.props.img} />
+                    <div onMouseEnter={this.hoverOn} 
                         onMouseLeave={this.hoverOff} >                        
-                        <Profile />                      
+                    <div className='show-profile'>
+                        <div>
+                         </div>{this.state.profile}</div>                     
+                        </div>                             
                     </div>
-                    <img src={this.props.img} /> 
-                </div>
+                
                 <div>
                     <div className='tweet-stats'>
                         <p><strong>{this.props.name}</strong></p>
@@ -71,12 +78,12 @@ class Tweet extends React.Component {
     }   
 }
 
-const ProfileHover = props => {
-    return (
-        <div>
-           <Profile /> 
-        </div>
-    )
-}
+// const ProfileHover = props => {
+//     return (
+//         <div>
+//            <Profile /> 
+//         </div>
+//     )
+// }
 
 export default TweetBox;
