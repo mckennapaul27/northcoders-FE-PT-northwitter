@@ -1,10 +1,11 @@
 import React from 'react';
 import moment from 'moment'
+import Profile from './Profile';
 
 class TweetBox extends React.Component {
     state = {
         tweets: [],
-        loading: true
+        loading: true,        
     }
     componentDidMount () {
         // always called after render
@@ -15,10 +16,11 @@ class TweetBox extends React.Component {
         .then(body => {           
            this.setState({
             tweets: body.tweets,
-               loading: false
+            loading: false
            })
         })
     }
+    
     render () {
         const {tweets} = this.state;
         return (
@@ -32,19 +34,49 @@ class TweetBox extends React.Component {
     }
 }
 
-const Tweet = props => {
-    return (
-        <div className='tweet-box'>
-            <div className='tweet-box-img'>
-                <img src={props.img} />   
-            </div>
-            <div>
-                <h5>{props.name}    <span>@{props.screen_name}   </span><span>{props.time}</span></h5>
-                <p>{props.text}</p>
-            </div> 
-        </div>        
-    )
+class Tweet extends React.Component {
+    state = {
+        hover: false
+    }
+    hoverOn = (event) => {
+        this.setState({ 
+            hover: true 
+        });
+    }
+    hoverOff = (event) => { 
+        this.setState({ 
+            hover: false 
+        });    
+    }
+    render() {
+        return (
+            <div className='tweet-box'>
+                <div className='tweet-box-img'>                    
+                    <div className={this.state.hover? 'show-profile': 'x-show-profile'} onMouseEnter=       {this.hoverOn} 
+                        onMouseLeave={this.hoverOff} >                        
+                        <Profile />                      
+                    </div>
+                    <img src={this.props.img} /> 
+                </div>
+                <div>
+                    <div className='tweet-stats'>
+                        <p><strong>{this.props.name}</strong></p>
+                        <p>@{this.props.screen_name}</p>
+                        <p>{this.props.time}</p>
+                    </div>                
+                    <p>{this.props.text}</p>
+                </div> 
+            </div>        
+        )
+    }   
 }
 
+const ProfileHover = props => {
+    return (
+        <div>
+           <Profile /> 
+        </div>
+    )
+}
 
 export default TweetBox;

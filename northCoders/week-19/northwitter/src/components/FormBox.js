@@ -25,6 +25,7 @@ class FormBox extends React.Component {
         .then(res => {          
           return res;
         })
+        .catch(error => console.error('Error:', error))
     }
  
     render() {

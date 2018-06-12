@@ -27,7 +27,7 @@ class TrendsBox extends React.Component {
         if(loading) return null;
         
         return (
-            <div>
+            <div className='trends'>
                 <h2>Trends for you</h2>
                 {/* {loading === true ? <p>Loading...</p> :  */}
                 {trends.map(trend => {

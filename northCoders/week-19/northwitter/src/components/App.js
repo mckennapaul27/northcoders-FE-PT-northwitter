@@ -4,6 +4,7 @@ import './App.css';
 import FormBox from './FormBox';
 import TrendsBox from './TrendsBox';
 import TweetBox from './TweetBox';
+import Profile from './Profile'
 import classNames from 'classnames';
 
 class App extends Component {
@@ -35,14 +36,15 @@ class App extends Component {
     </nav>
     
     <div className='container'>
-      <div className="sidebar">          
+      <div className="sidebar">
+        <Profile />          
         <TrendsBox />  
       </div> 
       <div className='contain-main'>
         <div>
           <FormBox />
         </div> 
-        <div>
+        <div>        
           <TweetBox />
         </div>
       </div>
